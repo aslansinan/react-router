@@ -3,7 +3,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Users from "./components/Users";
 import User from "./components/User";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Error404 from "./components/Error404";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
   return (
@@ -12,13 +13,13 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink activeClassName="active" to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink activeClassName="active" to="/about">About</NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink activeClassName="active" to="/users">Users</NavLink>
             </li>
           </ul>
         </nav>
@@ -26,16 +27,19 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route  activeClassName="active" path="/" element={<Home />} />
         </Routes>
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route  activeClassName="active" path="/about" element={<About />} />
         </Routes>
         <Routes>
-          <Route path="/users" element={<Users />} />
+          <Route activeClassName="active" path="/users" element={<Users />} />
         </Routes>
         <Routes>
-          <Route path="/user/:id" element={<User />} />
+          <Route activeClassName="active" path="/user/:id" element={<User />} />
+        </Routes>
+        <Routes>
+          <Route activeClassName="active" path="*" element={<Error404 />} />
         </Routes>
       </div>
     </Router>
