@@ -2,7 +2,8 @@ import "./App.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Users from "./components/Users";
-import { BrowserRouter as Router, Routes,Route, Link } from "react-router-dom";
+import User from "./components/User";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -25,13 +26,16 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Routes>
           <Route path="/about" element={<About />} />
         </Routes>
         <Routes>
           <Route path="/users" element={<Users />} />
         </Routes>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/user/:id" element={<User />} />
         </Routes>
       </div>
     </Router>
